@@ -1,0 +1,68 @@
+.about-container {
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    background-image: url("../../assets/img/codigo.jpg"); /* Ruta correcta de la imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: white;
+    font-size: 20px;
+}
+
+.about-container ul {
+    text-align: center; /* Alinea el texto a la izquierda para mantener las viñetas centradas */
+}
+
+.about-container ul li {
+    list-style-position: center; /* Coloca las viñetas dentro del margen izquierdo del texto */
+    margin-left: 0; /* Elimina el margen izquierdo predeterminado */
+    padding-left: 20px; /* Añade espacio a la izquierda del texto para las viñetas */
+}
+
+.about-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Cambia la opacidad ajustando el último valor (0.5 en este caso) */
+}
+  
+  .profile-image {
+    width: 150px; /* Ajusta el tamaño de acuerdo a tu preferencia */
+    height: auto;
+    border-radius: 50%; /* Para una imagen redonda */
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid white;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .image-container:hover .profile-image {
+    transform: scale(1.1); /* Cambia el tamaño al hacer hover */
+  }
+  
+  .image-container:hover .image-overlay {
+    opacity: 1;
+  }
+  

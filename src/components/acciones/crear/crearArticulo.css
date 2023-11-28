@@ -1,0 +1,53 @@
+/* Estilos para el formulario de CrearArticulo */
+#formulario {
+    text-align: center;
+    padding: 10px;
+    max-width: 60%; /* Establece el ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario en la pantalla */
+  }
+  
+  /* Estilos para los campos del formulario */
+  #formulario input[type="text"],
+  #formulario textarea,
+  #formulario select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #080808;
+    background-color: #f1f1f1;
+    color: black;
+    /* Agrega más estilos según tus preferencias */
+  }
+  
+  #formulario input[type="text"]:focus,
+  #formulario textarea:focus,
+  #formulario select:focus {
+    outline: none;
+  }
+  
+  /* Vista previa de la imagen */
+  .preview-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  /* Botón de guardar */
+  #formulario input[type="submit"] {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #01cf0c;
+    color: white;
+    cursor: pointer;
+    width: 60%;
+    margin: 15px auto;
+    display: block;
+  }
+  
+  #formulario input[type="submit"]:hover {
+    background-color: black;
+    color: white;
+  }
+  

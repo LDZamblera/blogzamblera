@@ -1,0 +1,154 @@
+/* Estilos para el contenedor principal del formulario de contacto */
+.contact-container {
+    text-align: center;
+    padding: 10px;
+    max-width: 60%; /* Establece el ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor en la pantalla */
+  }
+  
+  /* Estilos para los campos del formulario */
+  .contact-container input[type="text"],
+  .contact-container input[type="email"],
+
+  .contact-container input[type="tel"]
+  .contact-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #080808;
+    /* Agrega más estilos según tus preferencias */
+  }
+
+  .contact-container input[type="tel"] {
+    background-color: #f1f1f1;
+    color: #333333;
+    height: 40px;
+  }
+  
+  .contact-container input[type="tel"]:focus {
+    outline: none;
+    
+  }
+  
+  .contact-container textarea{
+    height: 100px;
+  }
+  .contact-container textarea {
+    resize: vertical; /* Permite redimensionar verticalmente el área de texto */
+  }
+  
+  .contact-container button {
+    padding: 8px 8px; /* Reducción del padding para hacer el botón más pequeño */
+    border: none;
+    border-radius: 5px; /* Redondear esquinas */
+    background-color: #01cf0c;
+    color: white;
+    cursor: pointer;
+    width: 20%; /* Ancho del botón */
+    margin: 15px auto; /* Centrar el botón con margen automático */
+    display: block; /* Hacer que el botón sea un bloque para aplicar el ancho */
+    /* Agrega más estilos según tus preferencias */
+  }
+  
+  
+  .contact-container button:hover {
+    background-color: black;
+    color: white;
+  }
+  
+  
+  /* Distribuir los elementos del formulario */
+  .contact-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-container form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  
+  /* Estilos para los enlaces de redes sociales */
+  .social-media-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .social-media-links a {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    width: 4.375rem;
+    height: 4.375rem;
+    background: #f1f1f1;
+    border-radius: 30%;
+    box-shadow: 0 0.3125rem 0.9375rem -0.3125rem #00000070;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s linear;
+  }
+  
+  .social-media-links .linkedin {
+    color: #0e76a8;
+  }
+  .social-media-links .instagram {
+    color: #bc2a8d;
+  }
+  .social-media-links .twitter {
+    color: #00acee;
+  }
+  .social-media-links .youtube {
+    color: #c4302b;
+  }
+  .social-media-links .github {
+    color: #333333;
+  }
+  
+  .social-media-links a:hover {
+    transform: scale(1.3);
+    color: #ffffff;
+  }
+  
+  .social-media-links a::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    transform: rotate(45deg);
+    left: -110%;
+    top: 90%;
+  }
+  
+  .social-media-links .linkedin::before {
+    background: #0e76a8;
+  }
+  .social-media-links .instagram::before {
+    background: #bc2a8d;
+  }
+  .social-media-links .twitter::before {
+    background: #00acee;
+  }
+  .social-media-links .youtube::before {
+    background: #c4302b;
+  }
+  .social-media-links .github::before {
+    background: #333333;
+  }
+  
+  .social-media-links a:hover::before {
+    animation: aaa 0.7s 1;
+    top: -10%;
+    left: -10%;
+  }
+  
