@@ -1,5 +1,5 @@
 var urlEndPoint = { 
-    endpoint: "https://blogframeworksdata-default-rtdb.firebaseio.com"
+    endpoint: ""
 }
 
 export default urlEndPoint;
