@@ -4,7 +4,7 @@ import CardClima from '../CardClima/CardClima';
 
 
 const WeatherPanel = () => {
-    const apiKey = "1be0caac83b48b6f60719352408d9cab";
+  
     let urlWeather = `http://api.openweathermap.org/data/2.5/weather?appid=${apiKey}`;
     let urlForecast = `http://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}`;
     let cityUrl = "&q=";
