@@ -11,7 +11,7 @@ class Footer extends Component{
         return (
         <footer id="footer">
             <div className="cewnter">
-                <p><i>Copyright &copy; - Zamblera Lucas Daniel</i></p>
+                <p><i>Copyright &copy; - Zamblera Lucas Daniel - 2023</i></p>
             </div>
         </footer>
         );

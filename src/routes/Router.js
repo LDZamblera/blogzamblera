@@ -12,6 +12,7 @@ import EditarArticulo from '../components/acciones/editar/editarArticulo';
 import About  from '../components/About/About';
 import Contact from "../components/Contact/Contact"
 import SocialBar from '../components/SocialBar/SocialBar';
+import Noticias from '../components/Noticias/Noticias';
 
 class Router extends Component {
     render() {
@@ -30,6 +31,7 @@ class Router extends Component {
                     <Route exact path="/blog/editar/:id" element={<EditarArticulo />} />
                     <Route exact path="/blog/busqueda/:buscar" element={<Buscador />} />
                     <Route exact path='/contactanos' element={<SocialBar />} />
+                    <Route exact path='/noticias' element={<Noticias />} />
                     <Route
                         exact
                         path="/Navigate/:buscar"
@@ -41,6 +43,7 @@ class Router extends Component {
                         }
                     />
                     <Route path="*" element={<Error />} />
+                    
                     
                 </Routes>
                 <div className="clearfix"></div>

@@ -1,0 +1,16 @@
+/* Card.css */
+
+/* Estilo para la imagen */
+.card-img {
+    max-width: 100px; /* Establece el ancho máximo */
+    height: auto; /* Mantiene la proporción de aspecto */
+  }
+  
+  /* Estilo para el contenedor principal */
+  .container {
+    max-width: 400px; /* Ajusta el ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+  
+  /* Otros estilos que desees añadir */
+  

@@ -1,0 +1,35 @@
+/* FormClima.css */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, white);
+    border: 0.5px solid grey; /* Degradado de verde a negro */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+ 
+  
+  input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    background-color: black;
+    color: white;
+  }
+  
+  .btn:hover {
+    background-color: #00FF00; /* Cambia a verde al pasar el cursor */
+  }
+  

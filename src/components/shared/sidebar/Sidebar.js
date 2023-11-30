@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-// Rutas
+
 import {Navigate} from 'react-router-dom';
+import WeatherPanel from "../../WeatherPanel/WeatherPanel"
+import CardClima from "../../CardClima/CardClima"
+import FormClima from "../../FormClima/FormClima"
+import NavBarClima from "../../NavBarClima/NavBarClima"
 
 class Sidebar extends Component{
 
@@ -59,7 +63,21 @@ class Sidebar extends Component{
                     <input type="text" nombre="search" ref={this.buscarRef} />
                     <input className="btn-buscar" type="submit" nombre="enviar" value="Buscar" />
                 </form>
+            
+                
             </div>
+            <br></br>
+            <br></br>
+
+            <CardClima/>
+            <br></br>
+            <WeatherPanel/>
+            <br></br>
+            <NavBarClima/>
+            <br></br>
+          
+           
+
         </aside>
         );
     }

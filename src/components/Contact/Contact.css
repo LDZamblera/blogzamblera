@@ -10,13 +10,14 @@
   .contact-container input[type="text"],
   .contact-container input[type="email"],
 
-  .contact-container input[type="tel"]
+  .contact-container input[type="tel"],
   .contact-container textarea {
-    width: 100%;
+    width: 80%;
+    height: 35px;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #080808;
+    border: 1px solid grey;
     /* Agrega más estilos según tus preferencias */
   }
 

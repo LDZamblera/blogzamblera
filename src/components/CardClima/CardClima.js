@@ -1,5 +1,6 @@
 import React from 'react';
-import Spinner from './Spinner';
+import Spinner from "../Spinner/Spinner"
+import './CardClima.css';
 
 const Card = ({loadingData, showData, weather, forecast}) => {
 
@@ -39,6 +40,7 @@ const Card = ({loadingData, showData, weather, forecast}) => {
 
     return (
         <div className="mt-5">
+            
 
             {
                 showData === true ? (
@@ -51,7 +53,7 @@ const Card = ({loadingData, showData, weather, forecast}) => {
                                     <p className="card-date">{date}</p>
                                     <h1 className="card-temp">{(weather.main.temp - 273.15).toFixed(1)}ºC</h1>
                                     <p className="card-desc"><img src={iconUrl} alt="icon"/>{weather.weather[0].description}</p>
-                                    <img src="https://images.pexels.com/photos/10817264/pexels-photo-10817264.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" className="img-fluid rounded-start" alt="..."/>
+                                    
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body text-start mt-2">
@@ -92,7 +94,7 @@ const Card = ({loadingData, showData, weather, forecast}) => {
                     </div>
 
                 ):(
-                    <h2 className="text-light">Sin datos</h2>
+                    <h2 className="text-light"></h2>
                 )
             }
 

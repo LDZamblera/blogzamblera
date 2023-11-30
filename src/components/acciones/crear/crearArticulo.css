@@ -2,7 +2,7 @@
 #formulario {
     text-align: center;
     padding: 10px;
-    max-width: 60%; /* Establece el ancho máximo del formulario */
+    max-width: 100%; /* Establece el ancho máximo del formulario */
     margin: 0 auto; /* Centra el formulario en la pantalla */
   }
   
@@ -11,10 +11,11 @@
   #formulario textarea,
   #formulario select {
     width: 100%;
-    padding: 10px;
+    height: auto;
+    padding: 20px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #080808;
+    border-radius: 8px;
+    border: 1px solid grey;
     background-color: #f1f1f1;
     color: black;
     /* Agrega más estilos según tus preferencias */
