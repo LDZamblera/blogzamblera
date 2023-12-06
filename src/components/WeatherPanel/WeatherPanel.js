@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import FormClima from '../FormClima/FormClima';
 import CardClima from '../CardClima/CardClima';
+const apiKey = "1be0caac83b48b6f60719352408d9cab";
 
 
 const WeatherPanel = () => {

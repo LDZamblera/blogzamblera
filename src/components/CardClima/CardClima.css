@@ -4,6 +4,7 @@
 .card-img {
     max-width: 100px; /* Establece el ancho máximo */
     height: auto; /* Mantiene la proporción de aspecto */
+    
   }
   
   /* Estilo para el contenedor principal */

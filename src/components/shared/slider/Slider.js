@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 // Rutas y enlaces
 import { Link } from 'react-router-dom';
+import './Slider.css';
 
 class Slider extends Component{
     //----------------------------------------------------------------------//

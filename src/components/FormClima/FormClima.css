@@ -7,7 +7,13 @@
     justify-content: center;
     height: 100vh;
     background: linear-gradient(to bottom, white);
-    border: 0.5px solid grey; /* Degradado de verde a negro */
+    border: 1px solid grey; 
+    background-color: white;/* Degradado de verde a negro */
+  }
+
+  .container:hover{
+    border: 2.5px solid gray;
+    border-radius: 5px;
   }
   
   form {

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // Componentes
 import Slider from "../shared/slider/Slider";
 import Sidebar from "../shared/sidebar/Sidebar";
-import Articulos from '../articulos/Articulos';
+import './Home.css';
 
 class Home extends Component{
     //----------------------------------------------------------------------//
@@ -20,7 +20,7 @@ class Home extends Component{
                     <div id="content">
                         <br></br>
                         <h1 className="sub-header"> Ultimos Articulos </h1>
-                        <Articulos home="true" />
+                        
                     </div>
                     <Sidebar />
                 </div>

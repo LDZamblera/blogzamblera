@@ -13,7 +13,7 @@ const Noticias = () => {
 
   const fetchNoticias = (categoria) => {
     fetch(
-      `https://newsapi.org/v2/everything?q=${categoria}&languaje=es&
+      `https://newsapi.org/v2/everything?domains=wsj.com&apiKey=3a769d64d9504391a60032f7c88274bf`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -27,21 +27,24 @@ const Noticias = () => {
         console.error('Error fetching data:', error);
       });
   };
-
-
   return (
     <div className="container-noticias">
       {articles.map((article, index) => (
-        <div className="item" key={index} onClick={() => window.open(article.url, '_blank')}>
+        <div
+          className="item"
+          key={index}
+          onClick={() => window.open(article.url, '_blank')}
+        >
           <h2>{article.title}</h2>
           <img src={article.urlToImage} alt={article.title} />
           <div className="info_item">
-            <span className="fecha">{new Date(article.publishedAt).toLocaleDateString()}</span>
-            <span className="fuente">{article.source.name}</span>
+            <span className="fecha">
+              {new Date(article.publishedAt).toLocaleDateString()}
+            </span>
+            <span className="fuente">{article.source?.name}</span>
           </div>
         </div>
       ))}
-    
     </div>
   );
 };

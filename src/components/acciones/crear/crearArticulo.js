@@ -2,57 +2,67 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
-import Global from "../../../api/Global";
 import './crearArticulo.css';
 
-
-
 class CrearArticulo extends Component {
-  url = Global.url;
-  tituloRef = React.createRef();
-  contenidoRef = React.createRef();
-  imagenRef = React.createRef(); 
-  autorRef = React.createRef(); 
-  categoriaRef = React.createRef();// Nueva referencia para el autor
-  // Referencia al campo de la imagen
-  state = {
-    articulo: {
-      titulo: "",
-      contenido: "",
-      fecha: new Date(),
-      imagen: null,
-      autor: "", 
-      categoria: "tecnología",// Nuevo estado para el autor // Estado para guardar la imagen seleccionada
-    },
-    status: null,
+  constructor(props) {
+    super(props);
+    this.state = {
+      articulo: {
+        titulo: "",
+        contenido: "",
+        imagen: null,
+        autor: "",
+        categoria: "tecnología",
+      },
+      status: null,
+    };
+  }
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState((prevState) => ({
+      articulo: {
+        ...prevState.articulo,
+        [name]: value,
+      },
+    }));
   };
 
-  cambiarState = () => {
+  handleFileChange = (e) => {
     this.setState({
       articulo: {
-        titulo: this.tituloRef.current.value,
-        contenido: this.contenidoRef.current.value,
-        fecha: new Date(),
-        imagen: this.imagenRef.current.files[0],
-        autor: this.autorRef.current.value ,
-        categoria: this.categoriaRef.current.value,// Capturar la imagen seleccionada
+        ...this.state.articulo,
+        imagen: e.target.files[0],
       },
     });
   };
 
-  guardarArticulo = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    this.cambiarState();
+
+    const { titulo, contenido, imagen, autor, categoria } = this.state.articulo;
+
+    // Verificar que los campos requeridos no estén vacíos antes de enviar la solicitud
+    if (
+      !titulo.trim() ||
+      !contenido.trim() ||
+      !autor.trim() ||
+      !categoria.trim()
+    ) {
+      swal("Error", "Por favor completa todos los campos obligatorios.", "error");
+      return;
+    }
 
     const formData = new FormData();
-    formData.append("titulo", this.state.articulo.titulo);
-    formData.append("contenido", this.state.articulo.contenido);
-    formData.append("fecha", this.state.articulo.fecha);
-    formData.append("imagen", this.state.articulo.imagen); // Agregar la imagen al FormData
-    formData.append("autor", this.state.articulo.autor); // Agregar autor al FormData
-    formData.append("categoria", this.state.articulo.categoria); // Agregar categoría al FormDa
+    formData.append("titulo", titulo);
+    formData.append("contenido", contenido);
+    formData.append("imagen", imagen);
+    formData.append("autor", autor);
+    formData.append("categoria", categoria);
+
     axios
-      .post(`${this.url}/articulos.json`, formData)
+      .post("http://localhost:3000/new-article", formData)
       .then((res) => {
         if (res.data) {
           this.setState({
@@ -66,6 +76,10 @@ class CrearArticulo extends Component {
           });
           swal("Error", "Error al crear el articulo.", "error");
         }
+      })
+      .catch((error) => {
+        console.error(error);
+        swal("Error", "Error al crear el articulo.", "error");
       });
   };
 
@@ -75,35 +89,33 @@ class CrearArticulo extends Component {
     }
 
     return (
-      
       <div id="formulario">
         <div className="center">
           <div id="content">
-            <br></br>
+            <br />
             <h1 className="sub-header">Crear Articulo</h1>
-            <br></br>
-            <form className="middle-form" onSubmit={this.guardarArticulo}>
+            <br />
+            <form className="middle-form" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="titulo">Titulo</label>
                 <input
                   type="text"
                   name="titulo"
-                  ref={this.tituloRef}
-                  onChange={this.cambiarState}
+                  value={this.state.articulo.titulo}
+                  onChange={this.handleChange}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="categoria">Categoría</label>
                 <select
                   name="categoria"
-                  ref={this.categoriaRef}
-                  onChange={this.cambiarState}
+                  value={this.state.articulo.categoria}
+                  onChange={this.handleChange}
                 >
                   <option value="tecnología">Tecnología</option>
                   <option value="viajes">Viajes</option>
                   <option value="moda">Moda</option>
                   <option value="deportes">Deportes</option>
-                  {/* ... otras opciones de categorías */}
                 </select>
               </div>
               <div className="form-group">
@@ -111,28 +123,25 @@ class CrearArticulo extends Component {
                 <input
                   type="text"
                   name="autor"
-                  ref={this.autorRef}
-                  onChange={this.cambiarState}
+                  value={this.state.articulo.autor}
+                  onChange={this.handleChange}
                 />
               </div>
-
               <div className="form-group">
                 <label htmlFor="contenido">Contenido</label>
                 <textarea
                   name="contenido"
-                  ref={this.contenidoRef}
-                  onChange={this.cambiarState}
+                  value={this.state.articulo.contenido}
+                  onChange={this.handleChange}
                 ></textarea>
               </div>
-
               <div className="form-group">
                 <label htmlFor="imagen">Imagen</label>
                 <input
                   type="file"
                   name="imagen"
                   accept="image/*"
-                  ref={this.imagenRef}
-                  onChange={this.cambiarState}
+                  onChange={this.handleFileChange}
                 />
                 {/* Vista previa de la imagen */}
                 {this.state.articulo.imagen && (
@@ -143,13 +152,6 @@ class CrearArticulo extends Component {
                   />
                 )}
               </div>
-
-              {/* Campo para autor */}
-             
-
-              {/* Campo para categoría */}
-              
-
               <div className="clearfix"></div>
               <input type="submit" value="Guardar" className="btn btn-success" />
             </form>

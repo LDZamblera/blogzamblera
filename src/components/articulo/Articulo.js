@@ -1,126 +1,92 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Navigate, Link } from 'react-router-dom';
-import swal from 'sweetalert';
-import Moment from 'react-moment';
-import 'moment/locale/es';
-import Global from '../../api/Global';
-import Sidebar from '../shared/sidebar/Sidebar';
-import imagen from '../../assets/img/paisaje.jpg';
-import noImagen from '../../assets/img/noimage.png';
+import React, { Component } from "react";
+import { Navigate } from "react-router-dom";
+import axios from "axios";
+import swal from "sweetalert";
 
-class Articulo extends Component {
-    url = Global.url;
-    state = {
-        articulo: null,
-        status: null
-    }
 
-    componentDidMount() {
-        console.log("Articulo.js - Método componentDidMount"); 
-        this.getArticulo();
-    }
+class CrearArticulo extends Component {
+  url = 'http://localhost:3000'; // Reemplaza con la URL de tu servidor backend
+  tituloRef = React.createRef();
+  contenidoRef = React.createRef();
+  imagenRef = React.createRef(); 
+  autorRef = React.createRef(); 
+  categoriaRef = React.createRef();
 
-    getArticulo = () => {
-        console.log("Articulo.js - Método getArticulo");
-        if (this.props.match && this.props.match.params) {
-            var id = this.props.match.params.id;
-            axios.get(`${this.url}/articulos/${id}.json`)
-                .then(res => {
-                    this.setState({
-                        articulo: res.data,
-                        status: 'success'
-                    });
-                })
-                .catch(error => {
-                    this.setState({
-                        status: 'error'
-                    });
-                });
+  state = {
+    articulo: {
+      titulo: "",
+      contenido: "",
+      fecha: new Date(),
+      imagen: null,
+      autor: "", 
+      categoria: "tecnología",
+    },
+    status: null,
+  };
+
+  cambiarState = () => {
+    this.setState({
+      articulo: {
+        titulo: this.tituloRef.current.value,
+        contenido: this.contenidoRef.current.value,
+        fecha: new Date(),
+        imagen: this.imagenRef.current.files[0],
+        autor: this.autorRef.current.value,
+        categoria: this.categoriaRef.current.value,
+      },
+    });
+  };
+
+  guardarArticulo = (e) => {
+    e.preventDefault();
+    this.cambiarState();
+
+    const formData = new FormData();
+    formData.append("titulo", this.state.articulo.titulo);
+    formData.append("contenido", this.state.articulo.contenido);
+    formData.append("fecha", this.state.articulo.fecha);
+    formData.append("imagen", this.state.articulo.imagen);
+    formData.append("autor", this.state.articulo.autor);
+    formData.append("categoria", this.state.articulo.categoria);
+
+    axios
+      .post(`${this.url}/new-article`, formData) // Reemplaza 'new-article' con la ruta correspondiente
+      .then((res) => {
+        if (res.data) {
+          this.setState({
+            articulo: res.data,
+            status: "success",
+          });
+          swal("Articulo Creado", "El articulo ha sido creado correctamente.", "success");
         } else {
-            console.error('No se pudo obtener el ID del artículo.');
-            this.setState({
-                status: 'error'
-            });
+          this.setState({
+            status: null,
+          });
+          swal("Error", "Error al crear el articulo.", "error");
         }
-    };
-    
+      });
+  };
 
-    eliminarArticulo = () => {
-        // Log de seguimiento
-        console.log("Articulo.js - Método eliminarArticulo");
-
-        // Popup de confirmación
-        swal({
-            title: "¿Estás seguro?",
-            text: "Una vez eliminado, no podrás recuperar este archivo.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                var id = this.props.match.params.id;
-                axios.delete(`${this.url}/articulos/${id}.json`)
-                .then(res => {
-                    this.setState({
-                        articulo: res.data,
-                        status: 'delete'
-                    });
-                });
-            } else {
-                swal("Tu archivo está seguro.");
-            }
-        });
-    };
-
-    render(){
-        console.log('Articulo - Método render()');
-
-        if(this.state.status === 'delete'){
-            return <Navigate to={'/blog'}  />;
-        }
-
-        const { articulo } = this.state;
-        return (
-            <div className="center">
-                <section id="content">
-                    {articulo ? (
-                        <div id="articles">
-                            <article className="article-item detail">
-                                <div className="image-wrap">
-                                    {articulo.imagen !== null ? (
-                                        <img src={imagen} alt={articulo.titulo} className="img-detalle-articulo center" />
-                                    ) : (
-                                        <img src={noImagen} alt={articulo.titulo} title={articulo.titulo} />
-                                    )}
-                                </div>
-                                <h1 className="sub-header">
-                                    {articulo.titulo}
-                                    <Link to={'/inicio'} className="btn-azul right">Volver</Link>    
-                                </h1>
-                                <span className="date">
-                                    <Moment locale='es' fromNow>
-                                        {articulo.fecha}
-                                    </Moment>
-                                </span>
-                                <p>{articulo.contenido}</p>
-                                <div className="clearfix"></div>
-                            </article>
-                        </div>
-                    ) : (
-                        <div id="articles">
-                            <h2 className="sub-header">El artículo no existe.</h2>
-                            <p>Inténtalo más tarde.</p>
-                        </div>
-                    )}
-                </section>
-
-                <Sidebar />
-                <div className="clearfix"></div>
-            </div>
-        );
+  render() {
+    if (this.state.status === "success") {
+      return <Navigate to={"/blog"} />;
     }
+
+    return (
+      <div id="formulario">
+        <div className="center">
+          <div id="content">
+            <br></br>
+            <h1 className="sub-header">Crear Articulo</h1>
+            <br></br>
+            <form className="middle-form" onSubmit={this.guardarArticulo}>
+              {/* Resto del formulario es igual */}
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Articulo;
+export default CrearArticulo;

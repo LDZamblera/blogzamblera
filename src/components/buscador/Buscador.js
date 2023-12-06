@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // Componentes
 import Slider from "../shared/slider/Slider";
 import Sidebar from "../shared/sidebar/Sidebar";
-import Articulos from "../articulos/Articulos";
+
 
 class Buscador extends Component{
     //----------------------------------------------------------------------//
@@ -20,7 +20,7 @@ class Buscador extends Component{
                 <div className="center">
                     <div id="content">
                         {/* Listado de articulos - APIRest */}
-                        <Articulos buscar={stringBuscado} />   
+                          
                     </div>
                     <Sidebar blog="true" />
                 </div>

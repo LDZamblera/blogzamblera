@@ -1,0 +1,14 @@
+/* Slider.css */
+
+#slider {
+    /* Estilo para el texto con color negro */
+    color: black;
+    /* Agrega estilos de animación al hacer hover */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #slider:hover {
+    /* Cambia el estilo al hacer hover */
+    transform: scale(1.1); /* Cambia el tamaño al hacer hover, puedes ajustar el valor según lo desees */
+  }
+  
