@@ -13,7 +13,7 @@ const Noticias = () => {
 
   const fetchNoticias = (categoria) => {
     fetch(
-      `https://newsapi.org/v2/everything?q=${categoria}&languaje=es&apiKey=f3798e116eb342b2bae58e7f0cbd9c11`
+      `https://newsapi.org/v2/everything?q=${categoria}&languaje=es&
     )
       .then((response) => response.json())
       .then((data) => {
