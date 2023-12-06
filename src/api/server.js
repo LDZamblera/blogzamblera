@@ -7,26 +7,23 @@ const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-
 app.use(bodyParser.json());
-
-// Middleware para analizar solicitudes con datos codificados en la URL
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'src')));
-app.use(cors({
-  origin: 'http://localhost:3001', // El origen del frontend
-  credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
-}));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// Configuración de CORS
+app.use(
+  cors({
+    origin: 'https://blogzamblera-kcjafcxfj-ldzambleras-projects.vercel.app', // URL del sitio web permitido
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
+  })
+);
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', ' http://localhost:3001');
+  res.header('Access-Control-Allow-Origin', 'https://blogzamblera-kcjafcxfj-ldzambleras-projects.vercel.app');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',
@@ -36,9 +33,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Rutas de tu aplicación
 const Routes = require("../api/Routes/Routes");
 app.use("/", Routes);
 
+// Conexión a la base de datos y escucha del servidor
 conn.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log(`Server running on PORT ${PORT}`);
