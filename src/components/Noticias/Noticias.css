@@ -63,6 +63,11 @@ img {
   margin: 5px;
 }
 
+img:hover{
+  width: 160px;
+  border: 3px solid black;
+}
+
 @media screen and (max-width: 768px) {
   li {
     flex: 0 0 50%; /* Muestra 2 elementos por fila en dispositivos pequeños */
