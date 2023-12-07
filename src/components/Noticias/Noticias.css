@@ -1,121 +1,82 @@
 /* Noticias.css */
 
 /* Estilos para el botón */
-header button {
-    background-color: black;
-    color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
+button {
+  background-color: black;
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  padding: 7px 10px;
+  border-radius: 30px;
+  border: 2px solid #ccc;
+}
+
+/* Estilos al pasar el mouse por encima del botón */
+button:hover {
+  background-color: green;
+  color: black;
+}
+
+
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 10px;
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('./pex.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 50px; /* Agrega un margen inferior para separar el contenedor del footer */
+}
+
+
+h2 {
+  text-align: center;
+  color: black;
+  margin-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0; /* Añadido para asegurar que no haya margen en el ul */
+}
+
+li {
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+img {
+  width: 150px;
+  height: auto;
+  margin: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  li {
+    flex: 0 0 50%; /* Muestra 2 elementos por fila en dispositivos pequeños */
   }
-  
-  /* Estilos al pasar el mouse por encima del botón */
-  header button:hover {
-    background-color: green;
-    color: black;
+}
+
+@media screen and (min-width: 769px) {
+  li {
+    flex: 0 0 33.33%; /* Muestra 3 elementos por fila en dispositivos medianos */
   }
-  
-  * {
-    box-sizing: border-box;
-    font-family: 'Montserrat';
+}
+
+@media screen and (min-width: 1200px) {
+  li {
+    flex: 0 0 16.66%; /* Muestra 6 elementos por fila en dispositivos grandes */
   }
-  
-  .container {
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #fc0505;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  nav {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  nav span {
-    display: inline-block;
-    background-color: #000;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 30px;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  nav span:hover {
-    color: red;
-  }
-  
-  header input {
-    padding: 5px 10px;
-    border: none;
-    border: 2px solid #ccc;
-    border-radius: 30px;
-  }
-  
-  header button {
-    border: none;
-    padding: 7px 10px;
-    border-radius: 30px;
-    border: 2px solid #ccc;
-  }
-  
-  .container-noticias {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
-    padding-bottom: 20px;
-  }
-  
-  .container-noticias .item {
-    background-color: black;
-    color: white;
-    max-width: 390px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.4s;
-  }
-  
-  .container-noticias .item:hover {
-    box-shadow: 0 0 10px 5px #ccc;
-    border: 5px solid #01cf0c;
-  }
-  
-  .container-noticias .item:hover h2 {
-    text-decoration: underline;
-  }
-  
-  .container-noticias .item .info_item {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .container-noticias .item img {
-    width: 100%;
-  }
-  
-  .container-noticias #btnSiguiente {
-    cursor: pointer;
-    width: 100px;
-    border: gray solid 2px;
-    background-color: #000;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .container-noticias #btnSiguiente:hover {
-    color: #01cf0c;
-    background-color: #000;
-    border: 3px solid #01cf0c;
-    align-items: center;
-  }
-  
+}
