@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 // Configuración de CORS
 app.use(
   cors({
-    origin: 'https://blogzamblera-kcjafcxfj-ldzambleras-projects.vercel.app', // URL del sitio web permitido
+    origin: 'https://blogzamblera-kcjafcxfj-ldzambleras-projects.vercel.app', 'https://blogzamblera.vercel.app/' ,// URL del sitio web permitido
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
