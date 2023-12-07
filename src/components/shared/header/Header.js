@@ -28,7 +28,7 @@ class Header extends Component{
                         <ul>
                             <li><NavLink to="/inicio" activeClassName="active">Inicio</NavLink></li>
                             <li><NavLink to="/blog" activeClassName="active">Blog</NavLink></li>
-                            <li><NavLink to="/acerca-de" activeClassName="active">Acerca de</NavLink></li>
+                            <li><NavLink to="/acerca-de" activeClassName="active">Acercade</NavLink></li>
                             <li><NavLink to="/contactanos" activeClassName="active">Contacto</NavLink></li>
                             <li><NavLink to="/blog/crear" activeClassName="active">Crear</NavLink></li>
                             <li><NavLink to="/blog/editar/:id" activeClassName="active">Editar/Eliminar</NavLink></li>
