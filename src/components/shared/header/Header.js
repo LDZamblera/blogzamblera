@@ -32,7 +32,7 @@ class Header extends Component{
                             <li><NavLink to="/contactanos" activeClassName="active">Contacto</NavLink></li>
                             <li><NavLink to="/blog/crear" activeClassName="active">Crear Articulo</NavLink></li>
                             <li><NavLink to="/blog/editar/:id" activeClassName="active">Editar/Eliminar</NavLink></li>
-                            <li><NavLink to="/noticias" activeClassName="active">Noticias</NavLink></li>
+                            <li><NavLink to="/noticias" activeClassName="active">Estrenos</NavLink></li>
                         </ul>
                     </nav>
                     
