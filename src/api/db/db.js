@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 
-const sequelize = new Sequelize(`postgres://postgres:1234@localhost:5432/blogzamblera`, {
+const sequelize = new Sequelize(``, {
   logging: false,
   native: false,
 });
