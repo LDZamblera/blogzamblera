@@ -1,0 +1,26 @@
+name: Auto Commits
+
+on:
+  schedule:
+    # Probar cada 1 minuto
+    - cron: '*/1 * * * *'
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Make changes
+      run: |
+        echo "Auto-generated content at $(date)" >> file_$(date +%s).txt
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "actions@github.com"
+        git add .
+        git commit -m "Auto-commit at $(date)"
+        git push
