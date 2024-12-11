@@ -3,7 +3,7 @@ name: Auto Commits
 on:
   schedule:
     # Probar cada 1 minuto
-    - cron: '*/1 * * * *'
+    - cron: '*/2 * * * *'
 
 jobs:
   auto-commit:
